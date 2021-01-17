@@ -1,19 +1,21 @@
 <style>
     .box {
        margin: 2px;
-       width: 200px;
-       height:200px;
+       width: 500px;
+       height:500px;
        float: left;
        opacity: 0.50;
     }
 
     html { background: rgb(183, 230, 231); }
     #go{ background: green; }
+    #test{ background: orange; }
 </style>
 
 <html>
     <script src="buzznut.js"></script>
     <body onload="start()">
         <div id="go" class="box" onclick="presh('go')">Press here to start timer</div>
+        <div id="test" class="box" onclick="presh('test')">test sound</div>
     </body>
 </html>

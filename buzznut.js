@@ -27,11 +27,16 @@ function randomIntFromInterval(min, max) {
 }
 
 // Handle the box touch
-async function presh(buttonName) {
-    console.log("pressed");
-    var interval = randomIntFromInterval(5, 15) * 1000;
-    console.log("interval = " + interval);
-    console.log("buzz");
-    await sleep(interval);
-    buzzSound.play();
+async function presh(command) {
+    if(command == "go"){
+        console.log("pressed");
+        var interval = randomIntFromInterval(5, 15) * 1000;
+        console.log("interval = " + interval);
+        console.log("buzz");
+        await sleep(interval);
+        buzzSound.play();
+    }
+    else if(command = "test"){
+        buzzSound.play();
+    }
 }
