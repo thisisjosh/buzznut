@@ -30,10 +30,12 @@ function randomIntFromInterval(min, max) {
 async function presh(command) {
     if(command == "go"){
         console.log("pressed");
+        document.getElementById('go').style.opacity = 0.25;
         var interval = randomIntFromInterval(5, 15) * 1000;
         console.log("interval = " + interval);
         console.log("buzz");
         await sleep(interval);
+        document.getElementById('go').style.opacity = 1;
         buzzSound.play();
     }
     else if(command = "test"){
