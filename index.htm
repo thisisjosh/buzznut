@@ -25,6 +25,13 @@
     <script src="buzznut.js"></script>
     <body onload="start()">
         <div id="go" class="box" onclick="presh('go')"><span>Press here to start timer</span></div>
+        Minimum Time Seconds <input type="number" id="minTime" name="minTime" min="1" value="5"><br/>
+        Maximum Time Seconds <input type="number" id="maxTime" name="maxTime" min="1" value="15"><br/>
+        <select name="soundChoice" id="soundChoice">
+            <option value="random">Random</option>
+            <option value="lawAndOrder.mp3">Law & Order</option>
+            <option value="zoidberg.mp3">Zoidberg</option>
+          </select>
         <button onclick="presh('test')">Test Sound</button>
     </body>
 </html>

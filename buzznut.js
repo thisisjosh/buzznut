@@ -13,9 +13,15 @@ function sound(src) {
     }
 }
 
-var buzzSound;
+var buzzSounds = {};
+var buzzSoundsArray = [];
 function start() {
-    buzzSound = new sound("lawAndOrder.mp3");
+    buzzSounds["lawAndOrder.mp3"] = new sound("lawAndOrder.mp3");
+    buzzSounds["zoidberg.mp3"] = new sound("zoidberg.mp3");
+
+    for( i in buzzSounds ) {
+        buzzSoundsArray.push(buzzSounds[i]);
+     }
 }
 
 function sleep(ms) {
@@ -23,22 +29,40 @@ function sleep(ms) {
 }
 
 function randomIntFromInterval(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
+    var r = Math.floor(Math.random() * (max - min + 1) + min);
+
+    if(r < min){
+        r = min;
+    }
+
+    return r;
 }
 
 // Handle the box touch
 async function presh(command) {
+    var soundChoice = document.getElementById("soundChoice").value;
+    var soundToPlay;
+    if(soundChoice == "random"){
+        var randomIndex = randomIntFromInterval(0, buzzSoundsArray.length - 1);
+        soundToPlay = buzzSoundsArray[randomIndex];
+    }
+    else {
+        soundToPlay = buzzSounds[soundChoice];
+    }
+
     if(command == "go"){
-        console.log("pressed");
+        var minTime = document.getElementById("minTime").value;
+        var maxTime = document.getElementById("maxTime").value;
+        console.log("pressed [" + minTime + "-" + maxTime + "]");
         document.getElementById('go').style.opacity = 0.25;
-        var interval = randomIntFromInterval(5, 15) * 1000;
+        var interval = randomIntFromInterval(minTime, maxTime) * 1000;
         console.log("interval = " + interval);
         console.log("buzz");
         await sleep(interval);
         document.getElementById('go').style.opacity = 1;
-        buzzSound.play();
+        soundToPlay.play();
     }
     else if(command = "test"){
-        buzzSound.play();
+        soundToPlay.play();
     }
 }
